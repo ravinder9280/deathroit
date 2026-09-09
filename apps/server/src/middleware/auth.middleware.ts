@@ -1,9 +1,6 @@
-import type { OnboardingUserFields } from "@monorepo/types";
 import { fromNodeHeaders } from "better-auth/node";
 import type { NextFunction, Request, Response } from "express";
-import { prisma } from "../db/client";
 import { auth } from "../lib/auth";
-import { z } from "zod";
 
 export const requireAuth = async (
   req: Request,

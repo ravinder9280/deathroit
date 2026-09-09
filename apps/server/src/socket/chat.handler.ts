@@ -13,8 +13,8 @@ const rateLimiter = new RateLimiterMemory({
 
 interface OnlineEntry {
   count: number;
-  name: string;
   image: string | null;
+  name: string;
   isGuest: boolean;
 }
 
