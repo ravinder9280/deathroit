@@ -70,7 +70,7 @@ RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
 
 
 # ---------------------------------------------------------------------------
-# build — generate the Prisma client, compile to dist/, emit a prod-only bundle
+# build — generate the Prisma client, then compile TypeScript to dist/
 # ---------------------------------------------------------------------------
 FROM deps AS build
 
@@ -86,7 +86,6 @@ ENV DATABASE_URL="postgresql://placeholder:placeholder@localhost:5432/placeholde
 RUN pnpm --filter server db:generate
 
 RUN pnpm --filter server build
-
 
 
 # ---------------------------------------------------------------------------
