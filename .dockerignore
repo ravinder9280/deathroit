@@ -1,2 +1,41 @@
+# Build context is the REPO ROOT. Everything the image needs is installed from
+# the lockfile or compiled inside the build, so keep the context small.
+
+# --- Secrets: must never end up in an image layer ---
+**/.env
+**/.env.*
+!**/.env.example
+
+# --- Dependencies (reinstalled inside the image from pnpm-lock.yaml) ---
 node_modules
-npm-debug.log
+**/node_modules
+.pnpm-store
+
+# --- Build output & caches (recompiled inside the image) ---
+**/dist
+**/build
+**/.next
+**/.turbo
+**/*.tsbuildinfo
+
+# --- VCS, CI and tooling metadata ---
+.git
+.gitignore
+.github
+.husky
+.agents
+.idea
+.vscode
+.cursor
+
+# --- Local artifacts ---
+**/*.log
+**/npm-debug.log*
+**/.pnpm-debug.log*
+test-results
+playwright-report
+apps/server/uploads
+
+# --- Docker's own files ---
+docker
+.dockerignore
